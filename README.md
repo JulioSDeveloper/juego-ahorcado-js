@@ -34,5 +34,9 @@ El objetivo fue aplicar manipulación del DOM, lógica de programación, eventos
 - Soporte para teclado físico
 - Publicar versión online con GitHub Pages
 
+## 🌐 Demo
+https://tusuario.github.io/juego-ahorcado-js/
+
 ## 👤 Autor
 Julio Sosa
+
