@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahorcado</title>
+</head>
+<body>
+  <div id="mensaje-final" class="oculto">
+  <p id="texto-final"></p>
+  <button id="reiniciar">🔁 Reiniciar</button>
+</div>
+
+  <div id="tablero">
+
+    <!-- 🏷️ Título animado -->
+    <h1 id="titulo">🎯 Juego del Ahorcado 🎯</h1>
+
+    <div id="juego">
+      <p id="vidas">❤️<span id="restante"></span></p>
+
+      <!-- 🧍 Muñeco del ahorcado -->
+      <div id="ahorcado">
+        <div class="parte cabeza"></div>
+        <div class="parte cuerpo"></div>
+        <div class="parte brazo-izq"></div>
+        <div class="parte brazo-der"></div>
+        <div class="parte pierna-izq"></div>
+        <div class="parte pierna-der"></div>
+      </div>
+
+      <p id="palabra"></p>
+    </div>
+
+    <div id="letras">
+      <button class="letra">A</button>
+      <button class="letra">B</button>
+      <button class="letra">C</button>
+      <button class="letra">D</button>
+      <button class="letra">E</button>
+      <button class="letra">F</button>
+      <button class="letra">G</button>
+      <button class="letra">H</button>
+      <button class="letra">I</button>
+      <button class="letra">J</button>
+      <button class="letra">K</button>
+      <button class="letra">L</button>
+      <button class="letra">M</button>
+      <button class="letra">N</button>
+      <button class="letra">Ñ</button>
+      <button class="letra">O</button>
+      <button class="letra">P</button>
+      <button class="letra">Q</button>
+      <button class="letra">R</button>
+      <button class="letra">S</button>
+      <button class="letra">T</button>
+      <button class="letra">U</button>
+      <button class="letra">V</button>
+      <button class="letra">W</button>
+      <button class="letra">X</button>
+      <button class="letra">Y</button>
+      <button class="letra">Z</button>
+    </div>
+
+    <!-- 🔁 Botón de reinicio (oculto al inicio) -->
+    <button id="reiniciar" onclick="location.reload()" style="display:none;">Reiniciar</button>
+
+  </div>
+</body>
+</html>

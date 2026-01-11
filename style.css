@@ -1,0 +1,256 @@
+/* 🎨 Fondo con gradiente y leve animación */
+body {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  animation: fondoMovimiento 10s infinite alternate ease-in-out;
+  margin: 0;
+}
+
+@keyframes fondoMovimiento {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(60deg); }
+}
+
+/* 🎯 Tablero principal */
+#tablero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px;           /* Reducido */
+  width: 95vw;             /* Más flexible */
+  max-width: 800px;
+  height: 90vh;            /* Usa el 90% de la ventana */
+  max-height: 90vh;        /* Limita la altura */
+  overflow: hidden;        /* Elimina scroll interno */
+  box-sizing: border-box;
+  background-color: rgba(255,255,255,0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* ❤️ Vidas */
+#vidas {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.6em;
+  color: #333;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* 🔤 Palabra oculta */
+#palabra {
+  font-size: 2em;
+  letter-spacing: 10px;
+  font-weight: bold;
+  color: #003049;
+  text-transform: uppercase;
+  transition: transform 0.3s ease;
+}
+#palabra.mostrar {
+  transform: scale(1.05);
+}
+
+/* 🏷️ Título animado */
+#titulo {
+  font-size: 2em;
+  color: #222;
+  margin-bottom: 20px;
+  animation: flotar 2s ease-in-out infinite alternate;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes flotar {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-10px); }
+}
+
+/* 🧍 Muñeco del ahorcado */
+#ahorcado {
+  width: 100px;
+  height: 140px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.parte {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  position: absolute;
+}
+
+.cabeza {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #333;
+  top: 10px;
+  left: 55px;
+}
+
+.cuerpo {
+  width: 3px;
+  height: 60px;
+  background: #333;
+  top: 50px;
+  left: 70px;
+}
+
+.brazo-izq, .brazo-der, .pierna-izq, .pierna-der {
+  width: 3px;
+  height: 40px;
+  background: #333;
+  top: 50px;
+  transform-origin: top center;
+}
+
+.brazo-izq { left: 70px; transform: rotate(-45deg); }
+.brazo-der { left: 70px; transform: rotate(45deg); }
+.pierna-izq { top: 110px; left: 70px; transform: rotate(-30deg); }
+.pierna-der { top: 110px; left: 70px; transform: rotate(30deg); }
+
+/* 🎮 Contenedor de letras */
+#letras {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  margin-top: 20px;
+  max-width: 90%;
+}
+
+/* 🔘 Botones de letras */
+.letra {
+  width: 45px;
+  height: 45px;
+  font-weight: bold;
+  font-size: 1em;
+  color: white;
+  background-color: #264653;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.letra:hover {
+  transform: scale(1.1);
+  background-color: #2a9d8f;
+}
+
+/* ✖️ Animación al desaparecer */
+.letra.ocultar {
+  animation: desaparecer 0.3s forwards ease-out;
+}
+
+@keyframes desaparecer {
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* ✅ Feedback visual */
+.correcta {
+  background-color: #2a9d8f !important;
+}
+.incorrecta {
+  background-color: #e63946 !important;
+}
+
+/* 🔁 Botón de reinicio */
+#reiniciar {
+  padding: 12px 25px;
+  background-color: #264653;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#reiniciar:hover {
+  transform: scale(1.1);
+  background-color: #2a9d8f;
+}
+
+/* Contenedor interno de juego */
+#juego {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* espacio entre vidas, muñeco y palabra */
+  width: 100%;
+}
+/* 🏁 Mensaje Final */
+#mensaje-final {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px 40px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 100;
+}
+
+#mensaje-final.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#mensaje-final.ganar {
+  border: 3px solid #2a9d8f;
+  color: #2a9d8f;
+}
+
+#mensaje-final.perder {
+  border: 3px solid #e63946;
+  color: #e63946;
+}
+
+#mensaje-final p {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+#mensaje-final button {
+  padding: 12px 25px;
+  background-color: #264653;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#mensaje-final button:hover {
+  transform: scale(1.1);
+  background-color: #2a9d8f;
+}
+
+.oculto {
+  display: none;
+}
+
